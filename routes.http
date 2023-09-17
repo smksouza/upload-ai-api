@@ -9,20 +9,34 @@ Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0g
 
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="file"; filename="test.mp3"
+Content-Disposition: form-data; name="file"; filename="example.mp3"
 Content-Type: audio/mpeg
 
-< ./test.mp3
+< ./example.mp3
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
 
 ###
 
 # @name createTranscription
 
-POST http://localhost:3333/videos/6d2cab86-a048-4bed-8a95-c6477ad849d9/transcription
+POST http://localhost:3333/videos/e9ceb2b9-9f04-4780-840f-faa3488094c6/transcription
 Content-Type: application/json
 
 
 {
-    "prompt": "random mp3, English speak"
+    "prompt": "clean architecture, ddd"
+}
+
+###
+
+
+# @name generate-ai-completion
+
+POST http://localhost:3333/ai/complete
+Content-Type: application/json
+
+{
+    "videoId": "e9ceb2b9-9f04-4780-840f-faa3488094c6",
+    "temperature": 0.5,
+    "template": "Gere um resumo sucinto da transcrição do vídeo informada a seguir: '''{transcription}'''"
 }
